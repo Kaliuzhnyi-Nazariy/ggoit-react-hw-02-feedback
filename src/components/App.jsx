@@ -40,7 +40,6 @@ class Button extends Component {
     const totalState = this.state.good + this.state.neutral + this.state.bad;
     const percentOfGood = Math.round(this.state.good / totalState * 100)
     return (
-      
       <div>
         <Section title='Please leave feedback'>
           <BlockOfButtons>
