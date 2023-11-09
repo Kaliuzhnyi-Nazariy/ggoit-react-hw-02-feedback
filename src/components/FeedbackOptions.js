@@ -3,7 +3,13 @@ import { Button } from 'components/Button';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div>
-      <Button onClick={options}>{onLeaveFeedback}</Button>
+      {options.map(name => {
+        return (
+          <Button key={name} onClick={() => onLeaveFeedback(name)}>
+            {name}
+          </Button>
+        );
+      })}
     </div>
   );
 };

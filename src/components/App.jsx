@@ -12,40 +12,25 @@ class Button extends Component {
     bad: 0,
   };
 
-  updateStatePos = () => {
+  LeaveFeedback = name => {
     this.setState(pervState => {
       return {
-        good: pervState.good + 1,
+        [name]: pervState[name] + 1
       }
     })
   }
 
-  updateStateNeutr = () => {
-    this.setState(pervState => {
-      return {
-        neutral: pervState.neutral + 1,
-      }
-    })
-  }
-
-  updateStateBad = () => {
-    this.setState(pervState => {
-      return {
-        bad: pervState.bad + 1
-      }
-    })
-  }
 
   render() {
     const totalState = this.state.good + this.state.neutral + this.state.bad;
     const percentOfGood = Math.round(this.state.good / totalState * 100)
+    
     return (
       <div>
         <Section title='Please leave feedback'>
           <BlockOfButtons>
-          <FeedbackOptions options={this.updateStatePos} onLeaveFeedback='good'/>
-          <FeedbackOptions options={this.updateStateNeutr} onLeaveFeedback='neutral'/>
-          <FeedbackOptions options={this.updateStateBad} onLeaveFeedback='bad'/>
+            <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.LeaveFeedback} />
+            {/* <FeedbackOptions options={this} onLeaveFeedback={this.LeaveFeedback} /> */}
           </BlockOfButtons>
         </Section>
         
